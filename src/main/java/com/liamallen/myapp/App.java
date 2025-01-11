@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class App {
 
-	public static int Width = 1920;
+	public static int Width = 960;
 	public static int Height = 1080;
 	public static int GridWidth = 3;
 	public static int GridHeight = 3;

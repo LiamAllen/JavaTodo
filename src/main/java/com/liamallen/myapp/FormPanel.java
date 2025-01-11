@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import javax.swing.border.MatteBorder;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -22,6 +23,8 @@ public class FormPanel extends JPanel implements ActionListener{
     private JComboBox month;
     private JComboBox year;
     private JButton sub;
+    private JPanel TextFields;
+    private JPanel DropDownFields;
     
     private DataHandler handler;
     
@@ -53,55 +56,62 @@ public class FormPanel extends JPanel implements ActionListener{
 	public FormPanel() {
 		// TODO Auto-generated constructor stub
 		 this.setLayout(new FlowLayout());
-	 
+		 this.setBorder(new MatteBorder(2, 2, 2, 2, Color.BLACK));
+		 
+		 TextFields = new JPanel();
+		 DropDownFields = new JPanel();
+		 
+		 TextFields.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		 DropDownFields.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		 
 	     //create and add Name label and text field
 	     name = new JLabel("Name");
 	     name.setFont(new Font("Arial", Font.PLAIN, 20));
 	     name.setSize(100, 20);
 	     name.setLocation(100, 100);
-	     this.add(name);
+	     TextFields.add(name);
 	 
-	     tname = new JTextField(20);
+	     tname = new JTextField("Task Name", 20);
 	     tname.setFont(new Font("Arial", Font.PLAIN, 15));
 	     tname.setLocation(200, 100);
-	     this.add(tname);
+	     TextFields.add(tname);
 	     
 	     //create and add description label and text field
 	     description = new JLabel("Desription");
 	     description.setFont(new Font("Arial", Font.PLAIN, 20));
 	     description.setSize(100, 20);
 	     description.setLocation(100, 100);
-	     this.add(description);
+	     TextFields.add(description);
 	 
-	     tdescription = new JTextArea("Description", 5, 30);
+	     tdescription = new JTextArea("Task Description", 5, 30);
 	     tdescription.setFont(new Font("Arial", Font.PLAIN, 15));
 	     tdescription.setLocation(200, 100);
-	     this.add(tdescription);
+	     TextFields.add(tdescription);
 	     
 	     //create and add due date selectorand label
-	     duedate= new JLabel("Task Due Date");
+	     duedate= new JLabel("Task Due Date: ");
 	     duedate.setFont(new Font("Arial", Font.PLAIN, 20));
 	     duedate.setSize(100, 20);
 	     duedate.setLocation(100, 250);
-	     this.add(duedate);
+	     DropDownFields.add(duedate);
 	 
 	     date = new JComboBox(dates);
 	     date.setFont(new Font("Arial", Font.PLAIN, 15));
 	     date.setSize(50, 20);
 	     date.setLocation(200, 250);
-	     this.add(date);
+	     DropDownFields.add(date);
 	 
 	     month = new JComboBox(months);
 	     month.setFont(new Font("Arial", Font.PLAIN, 15));
 	     month.setSize(60, 20);
 	     month.setLocation(250, 250);
-	     this.add(month);
+	     DropDownFields.add(month);
 	 
 	     year = new JComboBox(years);
 	     year.setFont(new Font("Arial", Font.PLAIN, 15));
 	     year.setSize(60, 20);
 	     year.setLocation(320, 250);
-	     this.add(year);
+	     DropDownFields.add(year);
 	     
 	     //create and add submit button
 	     sub = new JButton("Submit");
@@ -109,6 +119,11 @@ public class FormPanel extends JPanel implements ActionListener{
 	     sub.setSize(100, 20);
 	     sub.setLocation(150, 450);
 	     sub.addActionListener(this);
+	     
+	     TextFields.setVisible(true);
+	     DropDownFields.setVisible(true);
+	     this.add(TextFields);
+	     this.add(DropDownFields);
 	     this.add(sub);
 
 	     this.setVisible(true);

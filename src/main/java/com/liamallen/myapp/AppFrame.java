@@ -11,7 +11,8 @@ public class AppFrame extends JFrame {
 	public static int Width;
 	public static int Height; 
 	
-	private JLabel title;
+	private JLabel TodoFormTitle;
+	private JLabel TodoListTitle;
 	
 	public AppFrame(int width, int height, int gridWidth, int gridHeight) {
 		
@@ -27,16 +28,25 @@ public class AppFrame extends JFrame {
 		//set the JFrame size and close operation
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(width, height);
-		
-		title = new JLabel("Todo Item Form");
-	    title.setFont(new Font("Arial", Font.PLAIN, 30));
-	    title.setSize(300, 30);
-	    title.setLocation(300, 30);
-	    this.add(title);
-		
-		//add a FormPanel to the object
+	    
+		//add ListPanel to the object with label
+		TodoListTitle = new JLabel("Todo Items");
+	    TodoListTitle.setFont(new Font("Arial", Font.PLAIN, 30));
+	    TodoListTitle.setSize(300, 30);
+	    this.add(TodoListTitle);
+	    
+	    ListPanel listPanel = new ListPanel();
+	    this.add(listPanel);
+	    
+		//add a FormPanel to the object with label
+		TodoFormTitle = new JLabel("Todo Item Form");
+	    TodoFormTitle.setFont(new Font("Arial", Font.PLAIN, 30));
+	    TodoFormTitle.setSize(300, 30);
+	    this.add(TodoFormTitle);
+	    
 		FormPanel formPanel = new FormPanel();
 		this.add(formPanel);
+		
 		//make the frame visible
 		this.setVisible(true);
 	}

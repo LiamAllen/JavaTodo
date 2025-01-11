@@ -1,2 +1,4 @@
-1). create GUI for adding and finishing TodoItems
-2). write documentation in README.MD
+1). add button to delete todo items
+2). add button to refresh todo list
+3). clean gui elements
+4). write documentation in README.MD
