@@ -11,6 +11,8 @@ public class AppFrame extends JFrame {
 	public static int Width;
 	public static int Height; 
 	
+	private JLabel title;
+	
 	public AppFrame(int width, int height, int gridWidth, int gridHeight) {
 		
 		Width = width;
@@ -26,22 +28,18 @@ public class AppFrame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(width, height);
 		
-		//add a label to the object
-		JTextArea textArea = new JTextArea();
-		JScrollPane scrollPane = new JScrollPane(textArea);
-		JButton button = new JButton("Submit");
-		JLabel label = new JLabel("Enter text into the text field, then click 'submit'. ");
+		title = new JLabel("Todo Item Form");
+	    title.setFont(new Font("Arial", Font.PLAIN, 30));
+	    title.setSize(300, 30);
+	    title.setLocation(300, 30);
+	    this.add(title);
 		
-		this.add(label);
-		this.add(scrollPane);
-		this.add(button);
-		
+		//add a FormPanel to the object
+		FormPanel formPanel = new FormPanel();
+		this.add(formPanel);
 		//make the frame visible
 		this.setVisible(true);
 	}
 	
-	public static void addComponents() {
-
-
-	}
 }
+

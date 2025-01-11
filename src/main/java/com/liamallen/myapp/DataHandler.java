@@ -55,15 +55,13 @@ public class DataHandler {
 		
 	}
 	
-	public static ObjectNode createDateTime(int month, int day, int year, int hour, int minute) {
+	public static ObjectNode createDateTime(String month, String day, String year) {
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		ObjectNode object = objectMapper.createObjectNode();
 		object.put("Month", month);
 		object.put("Day", day);
 		object.put("Year", year);
-		object.put("Hour", hour);
-		object.put("Minute", minute);
 		
 		return object;
 	}

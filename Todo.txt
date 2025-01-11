@@ -1,0 +1,2 @@
+1). create GUI for adding and finishing TodoItems
+2). write documentation in README.MD

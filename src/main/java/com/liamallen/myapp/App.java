@@ -13,21 +13,11 @@ public class App {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//AppFrame appFrame = new AppFrame(Width, Height, GridWidth, GridHeight);
-		addTodoItem();
-		getTodoItems();
+		AppFrame appFrame = new AppFrame(Width, Height, GridWidth, GridHeight);
+		getTodoItemsForConsole();
 	}
 	
-	public static void addTodoItem() {
-		
-		DataHandler handler = new DataHandler();
-		ObjectNode dateTime = handler.createDateTime(2, 11, 2003, 5, 30);
-		String uuid = handler.createNewUUID();
-		ObjectNode todo = handler.createTodoItem(uuid, "Todo", "My Todo Description", dateTime);
-		handler.appendToFile(todo);
-	}
-	
-	public static void getTodoItems() {
+	public static void getTodoItemsForConsole() {
 		DataHandler handler = new DataHandler();
 		ArrayNode node = handler.readFromFile();
 	}
