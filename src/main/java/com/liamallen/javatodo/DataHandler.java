@@ -1,4 +1,4 @@
-package com.liamallen.myapp;
+package com.liamallen.javatodo;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,6 +18,7 @@ public class DataHandler {
 	public static String emptyName = "No todo Items were Found";
 	public static String emptyDescription = "";
 	public static String emptyId = "empty";
+	public static ObjectNode emptyDateTime;
 	
 	public DataHandler() {
 		
@@ -68,6 +69,7 @@ public class DataHandler {
 	
 	public static ArrayNode readFromFile() {
 		//try to read json data from file
+		emptyDateTime = createDateTime("Jan", "1", "2000");
 		try {
 			//read json data from file
 			byte[] jsonData = Files.readAllBytes(Paths.get(filePath));
@@ -75,7 +77,7 @@ public class DataHandler {
 			JsonNode rootNode = objectMapper.readTree(jsonData);
 			if(rootNode == null) {
 				ArrayNode emptyNodeArray = objectMapper.createArrayNode();
-				JsonNode emptyNode = createTodoItem(emptyId, emptyName, emptyDescription);
+				JsonNode emptyNode = createTodoItem(emptyId, emptyName, emptyDescription, emptyDateTime);
 				emptyNodeArray.add(emptyNode);
 				
 				return emptyNodeArray;
@@ -120,5 +122,34 @@ public class DataHandler {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void deleteFromFile(String uuid) {
+		try {
+			byte[] jsonData = Files.readAllBytes(Paths.get(filePath));
+			ObjectMapper objectMapper = new ObjectMapper();
+			JsonNode rootNode = objectMapper.readTree(jsonData);
+			//check if rootNode is an array
+			if(rootNode.isArray()) {
+				rootNode = (ArrayNode) rootNode;
+				for(int i = 0; i < rootNode.size(); i++) {
+					JsonNode todoItem = rootNode.get(i);
+					if(todoItem.path("Id").asText().equals(uuid)) {
+						((ArrayNode) rootNode).remove(i);
+						break;
+					}
+				}
+			} else {
+				((ArrayNode) rootNode).remove(0);
+			}
+			//write updated JSON to file
+			try (FileWriter fileWriter = new FileWriter(filePath)) {
+				objectMapper.writeValue(fileWriter, rootNode);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

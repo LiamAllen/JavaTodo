@@ -1,4 +1,4 @@
-package com.liamallen.myapp;
+package com.liamallen.javatodo;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -77,7 +77,7 @@ public class FormPanel extends JPanel implements ActionListener{
 	     TextFields.add(tname);
 	     
 	     //create and add description label and text field
-	     description = new JLabel("Desription");
+	     description = new JLabel("Description");
 	     description.setFont(new Font("Arial", Font.PLAIN, 20));
 	     description.setSize(100, 20);
 	     description.setLocation(100, 100);

@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.liamallen</groupId>
-  <artifactId>myapp</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>myapp</name>
-  <description>this is my application. there are many others like it, but this one is mine.</description>
+  <artifactId>JavaTodo</artifactId>
+  <version>1.0.0</version>
+  <name>JavaTodo</name>
+  <description>Simple java application for managing a todo list.</description>
   <dependencies>
   	<dependency>
     	<groupId>com.google.code.gson</groupId>
@@ -42,7 +42,7 @@
         		<configuration>
         			<archive>
                        <manifest>
-                           <mainClass>com.liamallen.myapp.App</mainClass> 
+                           <mainClass>com.liamallen.javatodo.App</mainClass> 
                        </manifest>
                    </archive>
           		<descriptorRefs>
